@@ -6,8 +6,8 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/micro/cli"
-	"github.com/micro/micro/plugin"
+	"github.com/jinbanglin/cli"
+	"github.com/jinbanglin/micro/plugin"
 )
 
 type index struct {

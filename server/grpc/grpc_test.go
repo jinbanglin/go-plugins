@@ -4,11 +4,11 @@ import (
 	"context"
 	"testing"
 
-	"github.com/micro/go-micro/registry/mock"
-	"github.com/micro/go-micro/server"
-	"github.com/micro/grpc-go"
+	"github.com/jinbanglin/go-micro/registry/mock"
+	"github.com/jinbanglin/go-micro/server"
+	"github.com/jinbanglin/grpc-go"
 
-	pb "github.com/micro/examples/greeter/srv/proto/hello"
+	pb "github.com/jinbanglin/examples/greeter/srv/proto/hello"
 )
 
 // server is used to implement helloworld.GreeterServer.

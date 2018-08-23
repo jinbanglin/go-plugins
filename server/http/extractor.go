@@ -4,10 +4,10 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/micro/go-micro/registry"
-	"github.com/micro/go-micro/server"
+	"github.com/jinbanglin/go-micro/registry"
+	"github.com/jinbanglin/go-micro/server"
 
-	"github.com/micro/util/go/lib/addr"
+	"github.com/jinbanglin/util/go/lib/addr"
 )
 
 func serviceDef(opts server.Options) *registry.Service {

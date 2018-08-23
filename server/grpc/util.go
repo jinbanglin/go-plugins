@@ -42,11 +42,11 @@ import (
 	"math"
 	"os"
 
-	"github.com/micro/grpc-go"
-	"github.com/micro/grpc-go/codes"
-	"github.com/micro/grpc-go/encoding"
-	"github.com/micro/grpc-go/stats"
-	"github.com/micro/grpc-go/transport"
+	"github.com/jinbanglin/grpc-go"
+	"github.com/jinbanglin/grpc-go/codes"
+	"github.com/jinbanglin/grpc-go/encoding"
+	"github.com/jinbanglin/grpc-go/stats"
+	"github.com/jinbanglin/grpc-go/transport"
 )
 
 // The format of the payload: compressed or not?

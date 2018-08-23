@@ -9,9 +9,9 @@ import (
 	"time"
 
 	"github.com/hashicorp/memberlist"
-	"github.com/micro/go-log"
-	"github.com/micro/go-micro/cmd"
-	"github.com/micro/go-micro/registry"
+	"github.com/jinbanglin/log"
+	"github.com/jinbanglin/go-micro/cmd"
+	"github.com/jinbanglin/go-micro/registry"
 	"github.com/mitchellh/hashstructure"
 	"github.com/pborman/uuid"
 )
@@ -92,7 +92,7 @@ func configure(g *gossipRegistry, opts ...registry.Option) error {
 
 	// shutdown old member
 	if g.member != nil {
-		log.Logf("Shutdown old memberlist: %v", g.member.Shutdown())
+		log.Infof("Shutdown old memberlist: %v", g.member.Shutdown())
 	}
 
 	cAddrs = newAddrs
@@ -135,7 +135,7 @@ func configure(g *gossipRegistry, opts ...registry.Option) error {
 	g.broadcasts = broadcasts
 	g.member = m
 
-	log.Logf("Local memberlist node %s:%d\n", m.LocalNode().Addr, m.LocalNode().Port)
+	log.Infof("Local memberlist node %s:%d\n", m.LocalNode().Addr, m.LocalNode().Port)
 	return nil
 }
 

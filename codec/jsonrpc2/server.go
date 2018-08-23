@@ -7,7 +7,7 @@ import (
 	"io"
 	"sync"
 
-	"github.com/micro/go-micro/codec"
+	"github.com/jinbanglin/go-micro/codec"
 )
 
 type serverCodec struct {

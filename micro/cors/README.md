@@ -10,8 +10,8 @@ Register the plugin before building Micro
 package main
 
 import (
-    "github.com/micro/micro/plugin"
-    "github.com/micro/go-plugins/micro/cors"
+    "github.com/jinbanglin/micro/plugin"
+    "github.com/jinbanglin/go-plugins/micro/cors"
 )
 
 func init() {

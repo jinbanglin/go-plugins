@@ -3,7 +3,7 @@
 This directory containers plugins for the micro toolkit itself. These plugins differ from 
 go-micro plugins in that they allow adding functionality to the API, CLI, Sidecar, etc.
 
-Learn more about micro plugins at [github.com/micro/micro/plugin](https://github.com/micro/micro/tree/master/plugin).
+Learn more about micro plugins at [github.com/jinbanglin/micro/plugin](https://github.com/jinbanglin/micro/tree/master/plugin).
 
 ## The Plugin Interface
 

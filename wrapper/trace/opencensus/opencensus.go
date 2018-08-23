@@ -6,10 +6,10 @@ import (
 	"encoding/base64"
 	"fmt"
 
-	"github.com/micro/go-log"
-	"github.com/micro/go-micro/client"
-	"github.com/micro/go-micro/metadata"
-	"github.com/micro/go-micro/server"
+	"github.com/jinbanglin/log"
+	"github.com/jinbanglin/go-micro/client"
+	"github.com/jinbanglin/go-micro/metadata"
+	"github.com/jinbanglin/go-micro/server"
 
 	"go.opencensus.io/trace"
 	"go.opencensus.io/trace/propagation"
@@ -89,7 +89,7 @@ func getTraceFromCtx(ctx context.Context) *trace.SpanContext {
 
 	traceCtxBytes, err := base64.RawStdEncoding.DecodeString(encodedTraceCtx)
 	if err != nil {
-		log.Logf("Could not decode trace context: %s", err.Error())
+		log.Infof("Could not decode trace context: %s", err.Error())
 		return nil
 	}
 

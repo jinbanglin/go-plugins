@@ -5,7 +5,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/micro/go-micro/registry"
+	"github.com/jinbanglin/go-micro/registry"
 )
 
 func TestBlackListFilter(t *testing.T) {

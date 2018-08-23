@@ -13,7 +13,7 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/micro/go-bot/command"
+	"github.com/jinbanglin/go-bot/command"
 )
 
 func init() {

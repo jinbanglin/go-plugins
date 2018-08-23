@@ -15,23 +15,23 @@ import (
 	"sync"
 	"time"
 
-	"github.com/micro/go-log"
-	"github.com/micro/go-micro/broker"
-	"github.com/micro/go-micro/cmd"
-	"github.com/micro/go-micro/codec"
-	"github.com/micro/go-micro/errors"
-	meta "github.com/micro/go-micro/metadata"
-	"github.com/micro/go-micro/registry"
-	"github.com/micro/go-micro/server"
-	"github.com/micro/util/go/lib/addr"
-	mgrpc "github.com/micro/util/go/lib/grpc"
+	"github.com/jinbanglin/log"
+	"github.com/jinbanglin/go-micro/broker"
+	"github.com/jinbanglin/go-micro/cmd"
+	"github.com/jinbanglin/go-micro/codec"
+	"github.com/jinbanglin/go-micro/errors"
+	meta "github.com/jinbanglin/go-micro/metadata"
+	"github.com/jinbanglin/go-micro/registry"
+	"github.com/jinbanglin/go-micro/server"
+	"github.com/jinbanglin/util/go/lib/addr"
+	mgrpc "github.com/jinbanglin/util/go/lib/grpc"
 
-	"github.com/micro/grpc-go/codes"
-	"github.com/micro/grpc-go/credentials"
-	"github.com/micro/grpc-go/encoding"
-	"github.com/micro/grpc-go/metadata"
-	"github.com/micro/grpc-go/status"
-	"github.com/micro/grpc-go/transport"
+	"github.com/jinbanglin/grpc-go/codes"
+	"github.com/jinbanglin/grpc-go/credentials"
+	"github.com/jinbanglin/grpc-go/encoding"
+	"github.com/jinbanglin/grpc-go/metadata"
+	"github.com/jinbanglin/grpc-go/status"
+	"github.com/jinbanglin/grpc-go/transport"
 )
 
 const (
@@ -173,7 +173,7 @@ func (g *grpcServer) serveStream(t transport.ServerTransport, stream *transport.
 	serviceName, methodName, err := mgrpc.ServiceMethod(stream.Method())
 	if err != nil {
 		if gerr := t.WriteStatus(stream, status.New(codes.InvalidArgument, err.Error())); err != nil {
-			log.Logf("grpc: Server.serveStream failed to write status: %v", gerr)
+			log.Infof("grpc: Server.serveStream failed to write status: %v", gerr)
 		}
 		return
 	}
@@ -183,7 +183,7 @@ func (g *grpcServer) serveStream(t transport.ServerTransport, stream *transport.
 	g.rpc.mu.Unlock()
 	if service == nil {
 		if err := t.WriteStatus(stream, status.New(codes.Unimplemented, fmt.Sprintf("unknown service %v", service))); err != nil {
-			log.Logf("grpc: Server.serveStream failed to write status: %v", err)
+			log.Infof("grpc: Server.serveStream failed to write status: %v", err)
 		}
 		return
 	}
@@ -191,7 +191,7 @@ func (g *grpcServer) serveStream(t transport.ServerTransport, stream *transport.
 	mtype := service.method[methodName]
 	if mtype == nil {
 		if err := t.WriteStatus(stream, status.New(codes.Unimplemented, fmt.Sprintf("unknown service %v", service))); err != nil {
-			log.Logf("grpc: Server.serveStream failed to write status: %v", err)
+			log.Infof("grpc: Server.serveStream failed to write status: %v", err)
 		}
 		return
 	}
@@ -218,7 +218,7 @@ func (g *grpcServer) serveStream(t transport.ServerTransport, stream *transport.
 	codec, err := g.newGRPCCodec(ct)
 	if err != nil {
 		if errr := t.WriteStatus(stream, status.New(codes.Internal, err.Error())); errr != nil {
-			log.Logf("grpc: Server.serveStream failed to write status: %v", errr)
+			log.Infof("grpc: Server.serveStream failed to write status: %v", errr)
 		}
 		return
 	}
@@ -272,13 +272,13 @@ func (g *grpcServer) processRequest(t transport.ServerTransport, stream *transpo
 			switch err := err.(type) {
 			case *rpcError:
 				if err := t.WriteStatus(stream, status.New(err.code, err.desc)); err != nil {
-					log.Logf("grpc: Server.processUnaryRPC failed to write status %v", err)
+					log.Infof("grpc: Server.processUnaryRPC failed to write status %v", err)
 				}
 			case transport.ConnectionError:
 				// Nothing to do here.
 			case interface{ GRPCStatus() *status.Status }:
 				if err := t.WriteStatus(stream, err.GRPCStatus()); err != nil {
-					log.Logf("grpc: Server.processUnaryRPC failed to write status %v", err)
+					log.Infof("grpc: Server.processUnaryRPC failed to write status %v", err)
 				}
 			default:
 				panic(fmt.Sprintf("grpc: Unexpected error (%T) from recvMsg: %v", err, err))
@@ -290,11 +290,11 @@ func (g *grpcServer) processRequest(t transport.ServerTransport, stream *transpo
 			switch err := err.(type) {
 			case *rpcError:
 				if err := t.WriteStatus(stream, status.New(err.code, err.desc)); err != nil {
-					log.Logf("grpc: Server.processUnaryRPC failed to write status %v", err)
+					log.Infof("grpc: Server.processUnaryRPC failed to write status %v", err)
 				}
 			default:
 				if err := t.WriteStatus(stream, status.New(codes.Internal, err.Error())); err != nil {
-					log.Logf("grpc: Server.processUnaryRPC failed to write status %v", err)
+					log.Infof("grpc: Server.processUnaryRPC failed to write status %v", err)
 				}
 
 			}
@@ -328,7 +328,7 @@ func (g *grpcServer) processRequest(t transport.ServerTransport, stream *transpo
 			statusCode = convertCode(err)
 			statusDesc = err.Error()
 			if err := t.WriteStatus(stream, status.New(statusCode, statusDesc)); err != nil {
-				log.Logf("grpc: Server.processUnaryRPC failed to write status: %v", err)
+				log.Infof("grpc: Server.processUnaryRPC failed to write status: %v", err)
 				return err
 			}
 			return nil
@@ -382,7 +382,7 @@ func (g *grpcServer) processRequest(t transport.ServerTransport, stream *transpo
 				statusDesc = appErr.Error()
 			}
 			if err := t.WriteStatus(stream, status.New(statusCode, statusDesc)); err != nil {
-				log.Logf("grpc: Server.processUnaryRPC failed to write status: %v", err)
+				log.Infof("grpc: Server.processUnaryRPC failed to write status: %v", err)
 				return err
 			}
 			return nil
@@ -621,7 +621,7 @@ func (g *grpcServer) Register() error {
 	g.Unlock()
 
 	if !registered {
-		log.Logf("Registering node: %s", node.Id)
+		log.Infof("Registering node: %s", node.Id)
 	}
 
 	// create registry options
@@ -696,7 +696,7 @@ func (g *grpcServer) Deregister() error {
 		Nodes:   []*registry.Node{node},
 	}
 
-	log.Logf("Deregistering node: %s", node.Id)
+	log.Infof("Deregistering node: %s", node.Id)
 	if err := config.Registry.Deregister(service); err != nil {
 		return err
 	}
@@ -712,7 +712,7 @@ func (g *grpcServer) Deregister() error {
 
 	for sb, subs := range g.subscribers {
 		for _, sub := range subs {
-			log.Logf("Unsubscribing from topic: %s", sub.Topic())
+			log.Infof("Unsubscribing from topic: %s", sub.Topic())
 			sub.Unsubscribe()
 		}
 		g.subscribers[sb] = nil
@@ -732,7 +732,7 @@ func (g *grpcServer) Start() error {
 		return err
 	}
 
-	log.Logf("Listening on %s", ts.Addr().String())
+	log.Infof("Listening on %s", ts.Addr().String())
 	g.Lock()
 	g.opts.Address = ts.Addr().String()
 	g.Unlock()

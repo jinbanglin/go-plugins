@@ -7,10 +7,10 @@ Import the codec and set within the client/server
 package main
 
 import (
-    "github.com/micro/go-micro"
-    "github.com/micro/go-micro/client"
-    "github.com/micro/go-micro/server"
-    "github.com/micro/go-plugins/codec/jsonrpc2"
+    "github.com/jinbanglin/go-micro"
+    "github.com/jinbanglin/go-micro/client"
+    "github.com/jinbanglin/go-micro/server"
+    "github.com/jinbanglin/go-plugins/codec/jsonrpc2"
 )
 
 func main() {

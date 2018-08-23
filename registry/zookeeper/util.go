@@ -5,7 +5,7 @@ import (
 	"path"
 	"strings"
 
-	"github.com/micro/go-micro/registry"
+	"github.com/jinbanglin/go-micro/registry"
 	"github.com/samuel/go-zookeeper/zk"
 )
 

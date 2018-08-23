@@ -25,8 +25,8 @@ Register the plugin before building Micro
 package main
 
 import (
-	"github.com/micro/micro/plugin"
-	"github.com/micro/go-plugins/micro/router"
+	"github.com/jinbanglin/micro/plugin"
+	"github.com/jinbanglin/go-plugins/micro/router"
 )
 
 func init() {

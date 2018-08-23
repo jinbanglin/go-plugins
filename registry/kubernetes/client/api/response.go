@@ -6,7 +6,7 @@ import (
 	"io/ioutil"
 	"net/http"
 
-	"github.com/micro/go-log"
+	"github.com/jinbanglin/log"
 )
 
 // Errors ...
@@ -82,7 +82,7 @@ func newResponse(res *http.Response, err error) *Response {
 		return r
 	}
 
-	log.Logf("K8s: request failed with code %v", r.res.StatusCode)
+	log.Infof("K8s: request failed with code %v", r.res.StatusCode)
 
 	b, err := ioutil.ReadAll(r.res.Body)
 	if err == nil {

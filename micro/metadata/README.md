@@ -10,8 +10,8 @@ Create a plugin file
 package main
 
 import (
-	"github.com/micro/go-plugins/micro/metadata"
-	"github.com/micro/micro/plugin"
+	"github.com/jinbanglin/go-plugins/micro/metadata"
+	"github.com/jinbanglin/micro/plugin"
 )
 
 func init() {

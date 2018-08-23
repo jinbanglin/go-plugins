@@ -3,7 +3,7 @@ package stomp
 import (
 	"time"
 
-	"github.com/micro/go-micro/broker"
+	"github.com/jinbanglin/go-micro/broker"
 )
 
 // SubscribeHeaders sets headers for subscriptions

@@ -5,8 +5,8 @@ import (
 	"context"
 	"crypto/tls"
 
-	"github.com/micro/go-micro/client"
-	"github.com/micro/grpc-go/encoding"
+	"github.com/jinbanglin/go-micro/client"
+	"github.com/jinbanglin/grpc-go/encoding"
 )
 
 type codecsKey struct{}

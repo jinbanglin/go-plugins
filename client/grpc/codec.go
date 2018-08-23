@@ -5,10 +5,10 @@ import (
 
 	"github.com/golang/protobuf/proto"
 	"github.com/json-iterator/go"
-	"github.com/micro/go-micro/codec"
-	"github.com/micro/go-micro/codec/jsonrpc"
-	"github.com/micro/go-micro/codec/protorpc"
-	"github.com/micro/grpc-go/encoding"
+	"github.com/jinbanglin/go-micro/codec"
+	"github.com/jinbanglin/go-micro/codec/jsonrpc"
+	"github.com/jinbanglin/go-micro/codec/protorpc"
+	"github.com/jinbanglin/grpc-go/encoding"
 )
 
 type jsonCodec struct{}

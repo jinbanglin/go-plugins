@@ -1,8 +1,8 @@
 package grpc
 
 import (
-	"github.com/micro/go-micro/errors"
-	"github.com/micro/grpc-go/status"
+	"github.com/jinbanglin/go-micro/errors"
+	"github.com/jinbanglin/grpc-go/status"
 )
 
 func microError(err error) error {

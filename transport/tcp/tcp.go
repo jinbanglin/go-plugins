@@ -9,12 +9,12 @@ import (
 	"net"
 	"time"
 
-	"github.com/micro/go-log"
-	"github.com/micro/go-micro/cmd"
-	"github.com/micro/go-micro/transport"
-	maddr "github.com/micro/util/go/lib/addr"
-	mnet "github.com/micro/util/go/lib/net"
-	mls "github.com/micro/util/go/lib/tls"
+	"github.com/jinbanglin/log"
+	"github.com/jinbanglin/go-micro/cmd"
+	"github.com/jinbanglin/go-micro/transport"
+	maddr "github.com/jinbanglin/util/go/lib/addr"
+	mnet "github.com/jinbanglin/util/go/lib/net"
+	mls "github.com/jinbanglin/util/go/lib/tls"
 )
 
 type tcpTransport struct {
@@ -121,7 +121,7 @@ func (t *tcpTransportListener) Accept(fn func(transport.Socket)) error {
 				if max := 1 * time.Second; tempDelay > max {
 					tempDelay = max
 				}
-				log.Logf("http: Accept error: %v; retrying in %v\n", err, tempDelay)
+				log.Infof("http: Accept error: %v; retrying in %v\n", err, tempDelay)
 				time.Sleep(tempDelay)
 				continue
 			}

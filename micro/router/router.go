@@ -9,11 +9,11 @@ import (
 	"sync"
 	"time"
 
-	"github.com/micro/cli"
-	"github.com/micro/go-config"
-	"github.com/micro/go-config/source"
-	"github.com/micro/go-config/source/file"
-	"github.com/micro/micro/plugin"
+	"github.com/jinbanglin/cli"
+	"github.com/jinbanglin/go-config"
+	"github.com/jinbanglin/go-config/source"
+	"github.com/jinbanglin/go-config/source/file"
+	"github.com/jinbanglin/micro/plugin"
 	"github.com/sirupsen/logrus"
 )
 

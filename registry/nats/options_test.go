@@ -8,7 +8,7 @@ import (
 	"time"
 
 	"github.com/go-log/log"
-	"github.com/micro/go-micro/registry"
+	"github.com/jinbanglin/go-micro/registry"
 	"github.com/nats-io/go-nats"
 )
 
@@ -92,7 +92,7 @@ func TestWatchQueryTopic(t *testing.T) {
 
 	natsURL := os.Getenv("NATS_URL")
 	if natsURL == "" {
-		log.Logf("NATS_URL is undefined - skipping tests")
+		log.Infof("NATS_URL is undefined - skipping tests")
 		return
 	}
 

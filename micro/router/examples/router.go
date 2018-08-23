@@ -4,10 +4,10 @@ import (
 	"net"
 	"net/http"
 
-	"github.com/micro/go-config"
-	"github.com/micro/go-config/source/file"
-	"github.com/micro/go-log"
-	"github.com/micro/go-plugins/micro/router"
+	"github.com/jinbanglin/go-config"
+	"github.com/jinbanglin/go-config/source/file"
+	"github.com/jinbanglin/log"
+	"github.com/jinbanglin/go-plugins/micro/router"
 )
 
 func main() {

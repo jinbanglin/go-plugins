@@ -38,12 +38,12 @@ import (
 	"context"
 	"io"
 
-	"github.com/micro/grpc-go"
-	"github.com/micro/grpc-go/codes"
-	"github.com/micro/grpc-go/encoding"
-	"github.com/micro/grpc-go/transport"
+	"github.com/jinbanglin/grpc-go"
+	"github.com/jinbanglin/grpc-go/codes"
+	"github.com/jinbanglin/grpc-go/encoding"
+	"github.com/jinbanglin/grpc-go/transport"
 
-	"github.com/micro/go-micro/server"
+	"github.com/jinbanglin/go-micro/server"
 )
 
 // rpcStream implements a server side Stream.

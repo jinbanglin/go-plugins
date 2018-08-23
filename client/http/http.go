@@ -13,15 +13,17 @@ import (
 	"sync"
 	"time"
 
-	"github.com/micro/go-micro/broker"
-	"github.com/micro/go-micro/client"
-	"github.com/micro/go-micro/cmd"
-	"github.com/micro/go-micro/codec"
-	errors "github.com/micro/go-micro/errors"
-	"github.com/micro/go-micro/metadata"
-	"github.com/micro/go-micro/registry"
-	"github.com/micro/go-micro/selector"
-	"github.com/micro/go-micro/transport"
+	"github.com/jinbanglin/go-micro/broker"
+	"github.com/jinbanglin/go-micro/client"
+	"github.com/jinbanglin/go-micro/cmd"
+	"github.com/jinbanglin/go-micro/codec"
+	errors "github.com/jinbanglin/go-micro/errors"
+	"github.com/jinbanglin/go-micro/metadata"
+	"github.com/jinbanglin/go-micro/registry"
+	"github.com/jinbanglin/go-micro/selector"
+	"github.com/jinbanglin/go-micro/transport"
+	gouuid "github.com/satori/go.uuid"
+	"github.com/nu7hatch/gouuid"
 )
 
 type httpClient struct {
@@ -189,6 +191,17 @@ func (h *httpClient) NewRequest(service, method string, req interface{}, reqOpts
 }
 
 func (h *httpClient) Call(ctx context.Context, req client.Request, rsp interface{}, opts ...client.CallOption) error {
+	md, ok := metadata.FromContext(ctx)
+	if !ok {
+		md = metadata.Metadata{}
+	}
+	if soleID, err := uuid.NewV4(); err == nil {
+		md["X-Sole-Id"] = soleID.String()
+		ctx = metadata.NewContext(ctx, md)
+	} else {
+		md["X-Sole-Id"] = gouuid.NewV4().String()
+		ctx = metadata.NewContext(ctx, md)
+	}
 	// make a copy of call opts
 	callOpts := h.opts.CallOptions
 	for _, opt := range opts {

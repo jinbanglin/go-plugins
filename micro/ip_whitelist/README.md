@@ -12,8 +12,8 @@ Register the plugin before building Micro
 package main
 
 import (
-	"github.com/micro/micro/plugin"
-	ip "github.com/micro/go-plugins/micro/ip_whitelist"
+	"github.com/jinbanglin/micro/plugin"
+	ip "github.com/jinbanglin/go-plugins/micro/ip_whitelist"
 )
 
 func init() {
@@ -36,8 +36,8 @@ For example, below you'll see the plugin registered with the API.
 package main
 
 import (
-	"github.com/micro/micro/api"
-	ip "github.com/micro/go-plugins/micro/ip_whitelist"
+	"github.com/jinbanglin/micro/api"
+	ip "github.com/jinbanglin/go-plugins/micro/ip_whitelist"
 )
 
 func init() {

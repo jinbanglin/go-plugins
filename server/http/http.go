@@ -7,10 +7,10 @@ import (
 	"net/http"
 	"sync"
 
-	"github.com/micro/go-log"
-	"github.com/micro/go-micro/cmd"
-	"github.com/micro/go-micro/registry"
-	"github.com/micro/go-micro/server"
+	"github.com/jinbanglin/log"
+	"github.com/jinbanglin/go-micro/cmd"
+	"github.com/jinbanglin/go-micro/registry"
+	"github.com/jinbanglin/go-micro/server"
 )
 
 type httpServer struct {
@@ -109,7 +109,7 @@ func (h *httpServer) Register() error {
 	}
 
 	h.registerOnce.Do(func() {
-		log.Logf("Registering node: %s", opts.Name+"-"+opts.Id)
+		log.Infof("Registering node: %s", opts.Name+"-"+opts.Id)
 	})
 
 	return opts.Registry.Register(service, rOpts...)
@@ -120,7 +120,7 @@ func (h *httpServer) Deregister() error {
 	opts := h.opts
 	h.Unlock()
 
-	log.Logf("Deregistering node: %s", opts.Name+"-"+opts.Id)
+	log.Infof("Deregistering node: %s", opts.Name+"-"+opts.Id)
 
 	service := serviceDef(opts)
 	return opts.Registry.Deregister(service)
@@ -137,7 +137,7 @@ func (h *httpServer) Start() error {
 		return err
 	}
 
-	log.Logf("Listening on %s", ln.Addr().String())
+	log.Infof("Listening on %s", ln.Addr().String())
 
 	h.Lock()
 	h.opts.Address = ln.Addr().String()

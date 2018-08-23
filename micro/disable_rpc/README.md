@@ -10,8 +10,8 @@ Register the plugin before building Micro
 package main
 
 import (
-	"github.com/micro/micro/plugin"
-	rpc "github.com/micro/go-plugins/micro/disable_rpc"
+	"github.com/jinbanglin/micro/plugin"
+	rpc "github.com/jinbanglin/go-plugins/micro/disable_rpc"
 )
 
 func init() {
@@ -28,8 +28,8 @@ For example, below you'll see the plugin registered with the API.
 package main
 
 import (
-	"github.com/micro/micro/api"
-	rpc "github.com/micro/go-plugins/micro/disable_rpc"
+	"github.com/jinbanglin/micro/api"
+	rpc "github.com/jinbanglin/go-plugins/micro/disable_rpc"
 )
 
 func init() {

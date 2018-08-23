@@ -4,7 +4,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/micro/grpc-go"
+	"github.com/jinbanglin/grpc-go"
 )
 
 type pool struct {

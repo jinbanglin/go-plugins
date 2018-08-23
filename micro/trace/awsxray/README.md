@@ -10,9 +10,9 @@ Register the plugin before building Micro
 package main
 
 import (
-	"github.com/micro/micro/plugin"
+	"github.com/jinbanglin/micro/plugin"
 	"github.com/aws/aws-sdk-go/service/xray"
-	"github.com/micro/go-plugins/micro/trace/awsxray"
+	"github.com/jinbanglin/go-plugins/micro/trace/awsxray"
 )
 
 func init() {
@@ -41,8 +41,8 @@ For example, below you'll see the plugin registered with the API.
 package main
 
 import (
-	"github.com/micro/micro/api"
-	"github.com/micro/go-plugins/micro/trace/awsxray"
+	"github.com/jinbanglin/micro/api"
+	"github.com/jinbanglin/go-plugins/micro/trace/awsxray"
 )
 
 func init() {

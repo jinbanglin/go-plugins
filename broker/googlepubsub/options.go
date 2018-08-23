@@ -4,7 +4,7 @@ import (
 	"context"
 	"time"
 
-	"github.com/micro/go-micro/broker"
+	"github.com/jinbanglin/go-micro/broker"
 	"google.golang.org/api/option"
 )
 

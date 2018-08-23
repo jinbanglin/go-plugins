@@ -9,12 +9,12 @@ import (
 	"testing"
 	"time"
 
-	"github.com/micro/go-log"
-	"github.com/micro/go-micro/registry"
-	"github.com/micro/go-micro/selector"
-	"github.com/micro/go-micro/selector/cache"
-	"github.com/micro/go-plugins/registry/kubernetes/client"
-	"github.com/micro/go-plugins/registry/kubernetes/client/mock"
+	"github.com/jinbanglin/log"
+	"github.com/jinbanglin/go-micro/registry"
+	"github.com/jinbanglin/go-micro/selector"
+	"github.com/jinbanglin/go-micro/selector/cache"
+	"github.com/jinbanglin/go-plugins/registry/kubernetes/client"
+	"github.com/jinbanglin/go-plugins/registry/kubernetes/client/mock"
 )
 
 var (

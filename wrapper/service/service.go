@@ -2,9 +2,9 @@
 package service
 
 import (
-	"github.com/micro/go-micro"
-	"github.com/micro/go-micro/client"
-	"github.com/micro/go-micro/server"
+	"github.com/jinbanglin/go-micro"
+	"github.com/jinbanglin/go-micro/client"
+	"github.com/jinbanglin/go-micro/server"
 
 	"context"
 )

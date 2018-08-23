@@ -10,8 +10,8 @@ Register the plugin before building Micro
 package main
 
 import (
-	"github.com/micro/micro/plugin"
-	"github.com/micro/go-plugins/micro/trace/uuid"
+	"github.com/jinbanglin/micro/plugin"
+	"github.com/jinbanglin/go-plugins/micro/trace/uuid"
 )
 
 func init() {
@@ -28,8 +28,8 @@ For example, below you'll see the plugin registered with the API.
 package main
 
 import (
-	"github.com/micro/micro/api"
-	"github.com/micro/go-plugins/micro/trace/uuid"
+	"github.com/jinbanglin/micro/api"
+	"github.com/jinbanglin/go-plugins/micro/trace/uuid"
 )
 
 func init() {

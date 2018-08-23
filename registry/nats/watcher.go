@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"time"
 
-	"github.com/micro/go-micro/registry"
+	"github.com/jinbanglin/go-micro/registry"
 	"github.com/nats-io/go-nats"
 )
 

@@ -4,7 +4,7 @@ import (
 	"io"
 
 	"github.com/asim/go-bson"
-	"github.com/micro/go-micro/codec"
+	"github.com/jinbanglin/go-micro/codec"
 )
 
 const (

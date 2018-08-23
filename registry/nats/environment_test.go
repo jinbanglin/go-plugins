@@ -4,9 +4,9 @@ import (
 	"os"
 	"testing"
 
-	"github.com/micro/go-log"
-	"github.com/micro/go-micro/registry"
-	"github.com/micro/go-plugins/registry/nats"
+	"github.com/jinbanglin/log"
+	"github.com/jinbanglin/go-micro/registry"
+	"github.com/jinbanglin/go-plugins/registry/nats"
 )
 
 type environment struct {
@@ -27,7 +27,7 @@ var e environment
 func TestMain(m *testing.M) {
 	natsURL := os.Getenv("NATS_URL")
 	if natsURL == "" {
-		log.Logf("NATS_URL is undefined - skipping tests")
+		log.Infof("NATS_URL is undefined - skipping tests")
 		return
 	}
 

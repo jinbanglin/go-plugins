@@ -10,9 +10,9 @@ import (
 	"github.com/aws/aws-sdk-go/aws/awserr"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/sqs"
-	"github.com/micro/go-log"
-	"github.com/micro/go-micro/broker"
-	"github.com/micro/go-micro/cmd"
+	"github.com/jinbanglin/log"
+	"github.com/jinbanglin/go-micro/broker"
+	"github.com/jinbanglin/go-micro/cmd"
 )
 
 const (

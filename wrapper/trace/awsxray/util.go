@@ -8,8 +8,8 @@ import (
 
 	"context"
 	"github.com/asim/go-awsxray"
-	"github.com/micro/go-micro/errors"
-	"github.com/micro/go-micro/metadata"
+	"github.com/jinbanglin/go-micro/errors"
+	"github.com/jinbanglin/go-micro/metadata"
 )
 
 // getHTTP returns a http struct

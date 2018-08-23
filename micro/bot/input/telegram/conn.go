@@ -6,8 +6,8 @@ import (
 	"sync"
 
 	"github.com/forestgiant/sliceutil"
-	"github.com/micro/go-bot/input"
-	"github.com/micro/go-log"
+	"github.com/jinbanglin/go-bot/input"
+	"github.com/jinbanglin/log"
 	"gopkg.in/telegram-bot-api.v4"
 )
 

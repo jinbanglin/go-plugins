@@ -3,9 +3,9 @@ package http
 import (
 	"context"
 
-	"github.com/micro/go-micro/codec"
-	"github.com/micro/go-micro/registry"
-	"github.com/micro/go-micro/server"
+	"github.com/jinbanglin/go-micro/codec"
+	"github.com/jinbanglin/go-micro/registry"
+	"github.com/jinbanglin/go-micro/server"
 )
 
 func newOptions(opt ...server.Option) server.Options {

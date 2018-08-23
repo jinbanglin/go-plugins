@@ -3,9 +3,9 @@ package gobreaker
 import (
 	"testing"
 
-	"github.com/micro/go-micro/client"
-	"github.com/micro/go-micro/registry/mock"
-	"github.com/micro/go-micro/selector"
+	"github.com/jinbanglin/go-micro/client"
+	"github.com/jinbanglin/go-micro/registry/mock"
+	"github.com/jinbanglin/go-micro/selector"
 	"github.com/sony/gobreaker"
 
 	"context"

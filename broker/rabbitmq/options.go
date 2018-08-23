@@ -3,7 +3,7 @@ package rabbitmq
 import (
 	"context"
 
-	"github.com/micro/go-micro/broker"
+	"github.com/jinbanglin/go-micro/broker"
 )
 
 type durableQueueKey struct{}

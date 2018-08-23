@@ -5,9 +5,9 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/micro/cli"
-	"github.com/micro/go-micro/client"
-	"github.com/micro/micro/plugin"
+	"github.com/jinbanglin/cli"
+	"github.com/jinbanglin/go-micro/client"
+	"github.com/jinbanglin/micro/plugin"
 )
 
 type whitelist struct {

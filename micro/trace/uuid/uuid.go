@@ -4,8 +4,8 @@ package uuid
 import (
 	"net/http"
 
-	"github.com/micro/cli"
-	"github.com/micro/micro/plugin"
+	"github.com/jinbanglin/cli"
+	"github.com/jinbanglin/micro/plugin"
 	"github.com/pborman/uuid"
 )
 
