@@ -8,7 +8,7 @@ import (
 	"time"
 
 	"errors"
-	uuid "github.com/nu7hatch/gouuid"
+	uuid "github.com/google/uuid"
 	"github.com/streadway/amqp"
 
 	"github.com/jinbanglin/go-micro/cmd"

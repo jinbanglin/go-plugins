@@ -14,7 +14,7 @@ import (
 	"github.com/jinbanglin/go-micro/client"
 	"github.com/jinbanglin/go-micro/cmd"
 	"github.com/jinbanglin/go-micro/codec"
-	errors "github.com/jinbanglin/go-micro/errors"
+	"github.com/jinbanglin/go-micro/errors"
 	"github.com/jinbanglin/go-micro/metadata"
 	"github.com/jinbanglin/go-micro/registry"
 	"github.com/jinbanglin/go-micro/selector"
@@ -24,8 +24,7 @@ import (
 	"github.com/jinbanglin/grpc-go/credentials"
 	"github.com/jinbanglin/grpc-go/encoding"
 	gmetadata "github.com/jinbanglin/grpc-go/metadata"
-	gouuid "github.com/satori/go.uuid"
-	"github.com/nu7hatch/gouuid"
+	"github.com/google/uuid"
 )
 
 type grpcClient struct {
@@ -239,13 +238,9 @@ func (g *grpcClient) Call(ctx context.Context, req client.Request, rsp interface
 	if !ok {
 		md = metadata.Metadata{}
 	}
-	if soleID, err := uuid.NewV4(); err == nil {
-		md["X-Sole-Id"] = soleID.String()
-		ctx = metadata.NewContext(ctx, md)
-	} else {
-		md["X-Sole-Id"] = gouuid.NewV4().String()
-		ctx = metadata.NewContext(ctx, md)
-	}
+	md["X-Sole-Id"] = uuid.New().String()
+	ctx = metadata.NewContext(ctx, md)
+
 	// make a copy of call opts
 	callOpts := g.opts.CallOptions
 	for _, opt := range opts {
