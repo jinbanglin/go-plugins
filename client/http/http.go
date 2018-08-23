@@ -193,8 +193,10 @@ func (h *httpClient) Call(ctx context.Context, req client.Request, rsp interface
 	md, ok := metadata.FromContext(ctx)
 	if !ok {
 		md = metadata.Metadata{}
+	}else if _,ok:=md["X-Sole-Id"];!ok{
+		md["X-Sole-Id"] = uuid.New().String()
+		ctx = metadata.NewContext(ctx, md)
 	}
-	md["X-Sole-Id"] = uuid.New().String()
 	ctx = metadata.NewContext(ctx, md)
 
 	// make a copy of call opts
