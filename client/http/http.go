@@ -23,6 +23,8 @@ import (
 	"github.com/jinbanglin/go-micro/selector"
 	"github.com/jinbanglin/go-micro/transport"
 	"github.com/google/uuid"
+	"github.com/jinbanglin/helper"
+	"github.com/jinbanglin/log"
 )
 
 type httpClient struct {
@@ -190,13 +192,14 @@ func (h *httpClient) NewRequest(service, method string, req interface{}, reqOpts
 }
 
 func (h *httpClient) Call(ctx context.Context, req client.Request, rsp interface{}, opts ...client.CallOption) error {
+	//add by jinbanglin
 	md, ok := metadata.FromContext(ctx)
 	if !ok {
 		md = metadata.Metadata{}
-	}else if _,ok:=md["X-Sole-Id"];!ok{
-		md["X-Sole-Id"] = uuid.New().String()
-		ctx = metadata.NewContext(ctx, md)
+	} else if _, ok := md["X-Trace-Id"]; !ok {
+		md["X-Trace-Id"] = uuid.New().String()
 	}
+	md["X-Sole-Id"] = uuid.New().String()
 	ctx = metadata.NewContext(ctx, md)
 
 	// make a copy of call opts
@@ -265,9 +268,38 @@ func (h *httpClient) Call(ctx context.Context, req client.Request, rsp interface
 			addr = fmt.Sprintf("%s:%d", addr, node.Port)
 		}
 
+		now := time.Now()
+		log.Infof(" |RPC_FROM |trace=%s |service=%s |server_id=%s |method=%s |metadata=%s "+
+			"|time=%v |address=%s |port=%d |content_type=%s |request=%v",
+			md["X-Trace-Id"],
+			req.Service(),
+			node.Id,
+			req.Method(),
+			node.Metadata,
+			now.Format(time.RFC3339),
+			node.Address,
+			node.Port,
+			req.ContentType(),
+			helper.Marshal2String(req.Request()),
+		)
 		// make the call
 		err = hcall(ctx, addr, req, rsp, callOpts)
 		h.opts.Selector.Mark(req.Service(), node, err)
+		log.Infof(" |RPC_TO |duration=%v |trace=%s |service=%s |server_id=%s |method=%s |metadata=%s "+
+			"|time=%v |address=%s |port=%d |content_type=%s |request=%v |err=%v",
+			time.Since(now),
+			md["X-Trace-Id"],
+			req.Service(),
+			node.Id,
+			req.Method(),
+			node.Metadata,
+			now.Format(time.RFC3339),
+			node.Address,
+			node.Port,
+			req.ContentType(),
+			helper.Marshal2String(rsp),
+			err,
+		)
 		return err
 	}
 
