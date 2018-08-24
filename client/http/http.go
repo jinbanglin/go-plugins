@@ -286,7 +286,7 @@ func (h *httpClient) Call(ctx context.Context, req client.Request, rsp interface
 		err = hcall(ctx, addr, req, rsp, callOpts)
 		h.opts.Selector.Mark(req.Service(), node, err)
 		log.Infof(" |RPC_TO |duration=%v |trace=%s |service=%s |server_id=%s |method=%s |metadata=%s "+
-			"|time=%v |address=%s |port=%d |content_type=%s |request=%v |err=%v",
+			"|time=%v |address=%s |port=%d |content_type=%s |response=%v |err=%v",
 			time.Since(now),
 			md["X-Trace-Id"],
 			req.Service(),
