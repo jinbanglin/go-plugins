@@ -3,8 +3,8 @@ package bsonrpc
 import (
 	"io"
 
-	"github.com/asim/go-bson"
 	"github.com/jinbanglin/go-micro/codec"
+	"github.com/asim/go-bson"
 )
 
 const (
