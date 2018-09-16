@@ -311,10 +311,9 @@ func (g *grpcClient) Call(ctx context.Context, req client.Request, rsp interface
 			addr = fmt.Sprintf("%s:%d", addr, node.Port)
 		}
 		now:=time.Now()
-		log.Infof(" |RCP_REQ |trace=%s |service=%s |server_id=%s |method=%s |metadata=%s "+
+		log.Infof(" |RCP_REQ |trace=%s |service=%s |method=%s |metadata=%s "+
 			"|time=%v |address=%s |port=%d |content_type=%s |request=%v",
 			md["X-Trace-Id"],
-			req.Service(),
 			node.Id,
 			req.Method(),
 			node.Metadata,
@@ -327,11 +326,10 @@ func (g *grpcClient) Call(ctx context.Context, req client.Request, rsp interface
 		// make the call
 		err = gcall(ctx, addr, req, rsp, callOpts)
 		g.opts.Selector.Mark(req.Service(), node, err)
-		log.Infof(" |RCP_RSP |duration=%v |trace=%s |service=%s |server_id=%s |method=%s |metadata=%s "+
+		log.Infof(" |RCP_RSP |duration=%v |trace=%s |service=%s |method=%s |metadata=%s "+
 			"|time=%v |address=%s |port=%d |content_type=%s |response=%v |err=%v",
 			time.Since(now),
 			md["X-Trace-Id"],
-			req.Service(),
 			node.Id,
 			req.Method(),
 			node.Metadata,
