@@ -106,7 +106,7 @@ func (tc *telegramConn) Send(event *input.Event) error {
 
 	if err != nil {
 		// probably it could be because of nested HTML tags -- telegram doesn't allow nested tags
-		log.Log("[telegram][Send] error:", err)
+		log.Log("[telegram][send] error:", err)
 		msgConfig.Text = "This bot couldn't send the response (Internal error)"
 		tc.input.api.Send(msgConfig)
 	}

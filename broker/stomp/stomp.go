@@ -141,7 +141,7 @@ func (r *rbroker) Publish(topic string, msg *broker.Message, opts ...broker.Publ
 		stompOpt = append(stompOpt, stomp.SendOpt.NoContentLength)
 	}
 
-	// Send
+	// send
 	if err := r.stompConn.Send(
 		topic,
 		"",
